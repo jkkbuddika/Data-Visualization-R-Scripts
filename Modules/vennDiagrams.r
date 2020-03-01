@@ -38,4 +38,7 @@ Key to the Venn Diagram Function:
     plotTitle         Title of the plot.
     color_1           Fill color for circle 1.
     color_2           Fill color for circle 2.
+
+Notes on cat.just use. Order: list(c(Horizontal position of cat1, Vertical position of cat1), 
+c(Horizontal position of cat2, Vertical position of cat2))
 "
