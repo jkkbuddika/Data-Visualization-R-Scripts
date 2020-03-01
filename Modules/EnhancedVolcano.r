@@ -5,10 +5,13 @@ Read the manual for additional customizations.
 The script assumes that the EnhancedVolcano package is installed.
 "
 
+#### Export settings -------------
+out_dir <- "/path/to/output/"
+
 #### Loading required libraries -------------
 library(EnhancedVolcano)
 
-#### Enhanced Volcano Function
+#### Enhanced Volcano Function -------------
 EVolcano_Plotter <- function(input_data, p_cutOFF, fc_cutOFF, x_lim, y_lim, cus_labels, plt_title){
   EnhancedVolcano(input_data,
                   lab = input_data$Gene,
@@ -34,36 +37,22 @@ EVolcano_Plotter <- function(input_data, p_cutOFF, fc_cutOFF, x_lim, y_lim, cus_
   
 }
 
-#### Plot Saver Function
-save_plots <- function(plot_name, width, height, res, plot_variable){
-  tiff(file = paste0(prefix, plot_name), width = width, height = height, units = "px", res = res)
+## Plot saver function
+save_plots <- function(out_dir, plot_name, width, height, res, plot_call){
+  tiff(file = paste0(out_dir, plot_name), width = width, height = height, units = "px", res = res)
   plot(plot_call)
   dev.off()
 }
 
-#### Calling Plotter Function
-cus_labels <- "" #c("mir-958", "mir-956", "mir-314") # Custom list of lables
+#### Calling Plotter Function -------------
+cus_labels <- "" # Custom list of lables
 
-plot_title_1 <- bquote(~italic(me31b)~-RNAi~vs~Control) # Title of the plot
+plot_title_1 <- bquote(~italic(x)~-RNAi~vs~Control) # Title of the plot
 vol_1 <- EVolcano_Plotter(resdata_1, 0.05, 1.0, c(-10, 10), c(0, 60), cus_labels, plot_title_1)
 vol_1
 dev.off()
 
-plot_title_2 <- bquote(~italic(tral)~-RNAi~vs~Control) # Title of the plot
-vol_2 <- EVolcano_Plotter(resdata_2, 0.05, 1.0, c(-10, 10), c(0, 40), cus_labels, plot_title_2)
-vol_2
-dev.off()
-
-plot_title_3 <- bquote(~italic(edc3)~-RNAi~vs~Control) # Title of the plot
-vol_3 <- EVolcano_Plotter(resdata_3, 0.05, 1.0, c(-10, 10), c(0, 60), cus_labels, plot_title_3)
-vol_3
-dev.off()
-
-plot_title_4 <- "" # bquote(~italic(pcm)~-RNAi~vs~Control) # Title of the plot
-vol_4 <- EVolcano_Plotter(resdata_4, 0.05, 1.0, c(-10, 10), c(0, 50), cus_labels, plot_title_4)
-vol_4
-dev.off()
-
+#### Saving graphics -------------
 save_plots("me31b_vs_Control_VPlot.tiff", 4800, 5400, 800, vol_1)
 
 "
@@ -77,6 +66,7 @@ Key to the Enhanced Volcano Function:
     plt_title         Title of the plot
 
 Key to the Plot Saver Function:
+    out_dir           Path to output directory
     plot_name         Name of the saved .TIFF file. Ex: EnhacedVolcano.tiff
     width             Width of the .tiff
     height            Height of the .tiff
