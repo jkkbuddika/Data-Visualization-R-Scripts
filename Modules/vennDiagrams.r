@@ -25,5 +25,17 @@ venn_plotter <- function(input_data, justification_1, justification_2, out_dir, 
 }
 
 #### Calling Plotter Function -------------
-venn_plotter(input_data, c(0.15, -2.75), c(0.9, -1.85), out_dir, 
-             "Significantly Downregulated Genes", "plotname", "#440154ff", "#21908dff")
+venn_plotter(input_data, c(0.15, -2.75), c(0.9, -1.85), out_dir, "plotname",
+             "Plot Title", "red", "blue")
+
+"
+Key to the Venn Diagram Function:
+    input_data        A dataframe with two columns of gene lists. Ex: Genes in RNAi vs. control
+    justification_1   x and y coordinates for df1 title.
+    justification_2   x and y coordinates for df2 title.
+    out_dir           Path to output directory.
+    plotName          Name of the plot for saving.
+    plotTitle         Title of the plot.
+    color_1           Fill color for circle 1.
+    color_2           Fill color for circle 2.
+"
