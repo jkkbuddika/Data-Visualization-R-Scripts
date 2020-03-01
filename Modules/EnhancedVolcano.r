@@ -53,7 +53,7 @@ vol_1
 dev.off()
 
 #### Saving graphics -------------
-save_plots("me31b_vs_Control_VPlot.tiff", 4800, 5400, 800, vol_1)
+save_plots("plot_name_Volcano.tiff", 4800, 5400, 800, vol_1)
 
 "
 Key to the Enhanced Volcano Function:
