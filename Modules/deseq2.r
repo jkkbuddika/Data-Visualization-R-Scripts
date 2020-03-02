@@ -74,7 +74,7 @@ head(res)
 resdata <- merge(as.data.frame(res), as.data.frame(counts(dds, normalized=TRUE)), by="row.names", sort=FALSE)
 names(resdata)[1] <- "Gene"
 head(resdata)
-write.csv(resdata_1, file = "DESeq2_genotype1_vs_genotype2_Results.csv")
+write.csv(resdata, file = "DESeq2_genotype1_vs_genotype2_Results.csv")
 
 #### PCA/Principle Component Analysis -------------
 
