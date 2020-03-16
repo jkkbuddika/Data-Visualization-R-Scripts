@@ -59,12 +59,12 @@ head(countdata)
 d <- DGEList(counts=countdata)
 head(d)
 
+## Perform TMM normalization
+d <- calcNormFactors(d)
+head(d)
+
 ## Read gene lengths as a matrx
 d$genes$Length <- c(geneLength)
-
-## Calculate rpkm values using edgeR rpkm function and write results to a .csv file
-countdata <- rpkm(d)
-write.table(countdata, file = "rpkm.csv", sep = ",", quote = FALSE)
 
 ## Calculate cpm values using edgeR cpm function and write results to a .csv file
 countdata <- cpm(d)
